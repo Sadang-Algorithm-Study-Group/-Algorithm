@@ -17,5 +17,5 @@ function solution(num){
     return count
 }
 
-let str = '*'
+let str = '(()*()))'
 console.log(solution(str))
