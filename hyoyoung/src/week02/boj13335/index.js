@@ -17,11 +17,8 @@ function solution(N,M,S,input){
     bridge.push(input.shift())
     time+=1
     while(bridge_weight){
-        console.log(bridge,time,bridge_weight)
         time +=1;
-
         bridge_weight-=bridge.shift();
-
         if(bridge_weight+input[0]<=S){
             bridge_weight+=input[0];
             bridge.push(input.shift())
