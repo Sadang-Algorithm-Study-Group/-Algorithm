@@ -7,7 +7,7 @@
 // function solution(priorities, location) {
 //     let pri = priorities
 //     var answer = 0;
-//    let arr= Array.from({length:priorities.length},(v,i)=>(String.fromCharCode(i+65)))
+//    let arr= Array.from({length:priorities.length},(v,i)=>(String.fromCharCode(i+65)))//[A,B,C]
 //    let queue=[]
 //    let [str,loc] = [arr[location],pri[location]]
     
@@ -26,12 +26,13 @@
 //     return answer;
 // }
 
-function solution(priorities, location) {
+function solution(priorities, location) {//2
     var answer = 0;
     let list = priorities.map((v,i)=>({
-        my:i===location,
+        my:i===location,//true -> false
         val : v
     }))
+    console.log(list)
     while(true){
         let cur = list.splice(0,1)[0];
         if(list.some(t=>cur.val<t.val)){
@@ -44,3 +45,4 @@ function solution(priorities, location) {
     return answer;
 }
 
+console.log(solution([2, 1, 3, 2],2))
