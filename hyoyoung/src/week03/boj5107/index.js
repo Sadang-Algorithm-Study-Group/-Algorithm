@@ -1,103 +1,54 @@
 const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
-let input = fs.readFileSync(filePath).toString().trim().split('\r\n');
+let input = fs.readFileSync(filePath).toString().trim().split('\n');
 
 let num = 0;
 let count = 0;
 
-while (input.length) {
+while (input.length > 0) {
     let graph = new Map();
     let inputs = [];
-    let zeroCheck = false;
     let nC = Number(input.shift());
-    if (Number(nC) && !isNaN(nC)) {
-        zeroCheck = false;
-        inputs = inputArr(nC);
-    } else {
-        zeroCheck = !zeroCheck;
-    }
-    for (let array of inputs) {
-        graph.set(array[0], []);
-    }
-    for (let array of inputs) {
-        graph.get(array[0]).push(array[1]);
-        graph.get(array[1]).push(array[0]);
-    }
 
-    var visitied = new Set();
+    if (!isNaN(nC) && nC > 0) {
+        for (let i = 0; i < nC; i++) {
+            let readLine = input.shift().split(' ');
+            let personA = readLine[0];
+            let personB = readLine[1];
 
-    function bfs(start) {
-        let queue = [start];
-        while (queue.length > 0) {
-            let current = queue.shift();
-            for (let next of graph.get(current)) {
-                if (visitied.has(next)) continue;
-                visitied.add(next);
-                queue.push(next);
+            if (!graph.has(personA)) {
+                graph.set(personA, []);
+            }
+            if (!graph.has(personB)) {
+                graph.set(personB, []);
+            }
+
+            graph.get(personA).push(personB);
+            graph.get(personB).push(personA);
+        }
+
+        var visited = new Set();
+
+        function bfs(start) {
+            let queue = [start];
+            while (queue.length > 0) {
+                let current = queue.shift();
+                for (let next of graph.get(current)) {
+                    if (visited.has(next)) continue;
+                    visited.add(next);
+                    queue.push(next);
+                }
             }
         }
-    }
-    for (let i of inputs) {
-        let name = i[0];
-        if (!visitied.has(name)) {
-            bfs(name);
-            count++;
+
+        for (let [person] of graph) {
+            if (!visited.has(person)) {
+                bfs(person);
+                count++;
+            }
         }
-    }
-    if (zeroCheck) {
-        console.log(num + ' ' + count);
+
+        console.log(`${++num} ${count}`);
         count = 0;
     }
 }
-
-function inputArr(nC) {
-    num++;
-    let inputs = [];
-    for (let i = 0; i < nC; i++) {
-        let readLine = input.shift().split(' ');
-        inputs.push(readLine);
-    }
-    return inputs;
-}
-
-// let n = Number(input.shift());
-// let inputs = [];
-
-// for (let i = 0; i < n; i++) {
-//     let readLine = input.shift().split(' ');
-
-//     inputs.push(readLine);
-// }
-// for (let array of inputs) {
-//     graph.set(array[0], []);
-// }
-// for (let array of inputs) {
-//     graph.get(array[0]).push(array[1]);
-//     graph.get(array[1]).push(array[0]);
-// }
-
-// let count = 0;
-// let num = 0;
-// var visitied = new Set();
-
-// function bfs(start) {
-//     let queue = [start];
-//     while (queue.length > 0) {
-//         let current = queue.shift();
-//         for (let next of graph.get(current)) {
-//             if (visitied.has(next)) continue;
-//             visitied.add(next);
-//             queue.push(next);
-//         }
-//     }
-// }
-// for (let i of inputs) {
-//     let name = i[0];
-//     if (!visitied.has(name)) {
-//         bfs(name);
-//         count++;
-//     }
-// }
-// console.log(num);
-
-// console.log(num + ' ' + count);
