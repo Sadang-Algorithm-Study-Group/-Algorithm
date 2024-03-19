@@ -13,11 +13,11 @@ function solution(participant, completion) {
     let hash1 = hashfun(participant);
     let hash2 = hashfun(completion);
     for (let [x, y] of hash1) {
-        if (!hash2.has(x)) {
-            answer = x;
-        } else if (hash1.get(x) !== hash2.get(x)) {
+        if (!hash2.has(x) || hash1.get(x) !== hash2.get(x)) {
             answer = x;
         }
     }
     return answer;
 }
+
+console.log(solution(['leo', 'kiki', 'eden'], ['eden', 'kiki']));
