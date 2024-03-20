@@ -7,6 +7,7 @@ function solution(numbers) {
             stack.push(i);
             if (stack.length !== 0) {
                 let n = parseInt([...new Set(stack)].map(index => numberList[index]).join(""));
+
                 if (isPrimeNumber(n)) primeNumbers.add(n);
                 if (stack.length - 1 < numberList.length - 1) getNumbers();
             }
