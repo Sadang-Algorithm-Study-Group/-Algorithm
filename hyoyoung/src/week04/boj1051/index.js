@@ -3,35 +3,21 @@ const fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().trim().split('\r\n');
 let [n, m] = input.shift().split(' ');
-let graph = Array.from({ length: +n }, () => Array(+m).fill(0));
-let check = Array.from({ length: +n }, () => Array(+m).fill(0));
+let graph = [];
 for (let i = 0; i < n; i++) {
-    for (let j = 0; j < m; j++) {
-        graph[i][j] = input[i][j];
-    }
+    graph.push([...input.shift()]);
 }
-function dfs(v, x, y, num) {
-    if (v === 3) {
-    }
+let size = 1;
 
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < m; j++) {
-            if (check[i][j] === 0 && num === graph[i][j]) {
-                check[i][j] = 1;
-                dfs(v + 1, graph[i][j]);
-                check[i][j] = 0;
+for (let s = 0; s < Math.min(n, m); s++) {
+    for (let i = 0; i < graph.length - s; i++) {
+        for (let j = 0; j < graph[i].length - s; j++) {
+            let num = graph[i][j];
+            if (num === graph[i][j + s] && num === graph[i + s][j] && num === graph[i + s][j + s]) {
+                size = Math.max(size, s + 1);
             }
         }
     }
 }
 
-for (let i = 0; i < n; i++) {
-    for (let j = 0; j < m; j++) {
-        if (check[i][j] === 0) {
-            check[i][j] = 1;
-            dfs(0, i, j, graph[i][j]);
-            check[i][j] = 0;
-        }
-    }
-}
-console.log(solution(graph));
+console.log(size * size);
