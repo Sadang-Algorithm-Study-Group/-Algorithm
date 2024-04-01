@@ -19,7 +19,7 @@ function solution(numbers) {
             }
         }
         for (let i = 0; i < numbers.length; i++) {
-            if (ch[i] === 0) {
+            if (!ch[i]) {
                 ch[i] = 1;
                 dfs(v + 1, path + numbers[i]);
                 ch[i] = 0;
