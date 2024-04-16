@@ -7,6 +7,8 @@ import java.util.Arrays;
 
 /**
  * 문제: 랜선 자르기
+ * 메모리: 17540 KB
+ * 시간: 216 ms
  */
 
 public class Main {
