@@ -45,22 +45,22 @@ public class Main {
     }
 
     private static boolean binarySearch(int[] numberCards, int target) {
-        int left_index = 0;
-        int right_index = numberCards.length - 1;
+        int leftIndex = 0;
+        int rightIndex = numberCards.length - 1;
 
-        while (left_index <= right_index) {
-            int mid_index = (right_index + left_index) / 2;
-            if (numberCards[mid_index] == target) {
+        while (leftIndex <= rightIndex) {
+            int midIndex = (rightIndex + leftIndex) / 2;
+            if (numberCards[midIndex] == target) {
                 return true;
             }
 
-            if (numberCards[mid_index] < target) {
-                left_index = mid_index + 1;
+            if (numberCards[midIndex] < target) {
+                leftIndex = midIndex + 1;
                 continue;
             }
 
-            if (numberCards[mid_index] > target) {
-                right_index = mid_index - 1;
+            if (numberCards[midIndex] > target) {
+                rightIndex = midIndex - 1;
             }
         }
 
