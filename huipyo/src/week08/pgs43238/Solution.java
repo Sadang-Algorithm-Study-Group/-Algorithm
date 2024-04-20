@@ -15,9 +15,9 @@ class Solution {
 
             if (total >= n) {
                 answer = Math.min(answer, mid);
-                left = mid + 1;
-            } else {
                 right = mid - 1;
+            } else {
+                left = mid + 1;
             }
         }
         return answer;
