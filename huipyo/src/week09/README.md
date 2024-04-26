@@ -35,7 +35,7 @@
 * 배열이나 리스트에서 ‘두 개의 포인터’를 사용하여 ‘특정 조건을 만족하는 부분 구간’을 효율적으로 탐색하는 알고리즘
 
 ### 투 포인터 예제 그림
-
+![스크린샷 2024-04-27 240427](https://github.com/Sadang-Algorithm-Study-Group/Algorithm/blob/huipyo/huipyo/src/week09/image.jpg)
 
 ### 투 포인터 수행 단계
 1. 배열 또는 리스트의 시작 위치에 첫 번쨰 포인터와 두 번째 포인터를 설정 
@@ -48,6 +48,7 @@
 투 포인터 종류
 
 * 고정 길이 슬라이딩 윈도우:
+  ![스크린샷 2024-04-27 240427](https://github.com/Sadang-Algorithm-Study-Group/Algorithm/blob/huipyo/huipyo/src/week09/img.gif)
     * 고정된 길이의 윈도우를 사용하여 배열이나 리스트를 탐색 
     * 윈도우 크기를 일정하게 유지하면서 왼쪽 포인터와 오른쪽 포인터를 이동시키며 필요한 계산을 수행 
     * 부분 배열의 합이나 평균을 계산하는 등의 문제에 사용될 수 있다.
