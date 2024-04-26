@@ -9,3 +9,5 @@
   - 5주차: 동적계획법 [3월 30일 기록](https://github.com/Sadang-Algorithm-Study-Group/Algorithm/tree/main/huipyo/src/week05)
   - 6주차: 누적합 [4월 6일 기록](https://github.com/Sadang-Algorithm-Study-Group/Algorithm/tree/main/huipyo/src/week06)
   - 7주차: 그리디 [4월 13일 기록](https://github.com/Sadang-Algorithm-Study-Group/Algorithm/tree/main/huipyo/src/week07)
+  - 8주차: 이분탐색 [4월 20일 기록](https://github.com/Sadang-Algorithm-Study-Group/Algorithm/tree/main/huipyo/src/week08)
+  - 9주차: 투 포인터 [4월 27일 기록](https://github.com/Sadang-Algorithm-Study-Group/Algorithm/tree/main/huipyo/src/week09)
